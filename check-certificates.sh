@@ -1,5 +1,5 @@
 #!/bin/bash
-for a in $(cat /etc/check-certificates.conf); do
+for a in $(cat check-certificates.conf); do
   days=$(ssl_cert_check.sh expire $a)
   (( $days <= 10 )) && {
   echo WARNING\!\!\! Site $a certificate expiring in $days days. | mailx -s "WARINING!!! Site $a certificate expires in $days days" -r support@kosmas.gr -S smtp=127
